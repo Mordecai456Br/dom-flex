@@ -1,10 +1,26 @@
 const content = document.querySelector('.content');
-
-// elementos
+// elements
 const elementos = ['div', ['p', 'h1', 'h2', 'h3', 'h4'], 'span', 'button'];
 let elementToBeCreated = [elementos[1][1], elementos[3]];
 
-// conteudos
+// color-selector and colors
+let backgroundColors = [["red",'CC3A3A'],["orange",'DD6033'],["yellow",'EDC63A'],["green",'94CC3A'],
+["blue",'3AADCC'],["dark-blue",'3A70CC'],["purple",'943ACC'],["pink",'CC3A94']];
+
+let colorSelected = 0;
+let elementBackground = [backgroundColors[colorSelected][1]];
+
+const colorSelector = document.querySelector('.color-selector');
+colorSelector.addEventListener('change', function () {
+    colorSelected = parseInt(this.value);
+
+    // Atualiza o array inteiro com a nova cor aplicada a todos os elementos
+    elementBackground = elementToBeCreated.map(() => backgroundColors[colorSelected][1]);
+    addElements(elementToBeCreated, elementWithContent, elementBackground);
+    console.log("Cores atualizadas: ", elementBackground);
+});
+
+// content
 let element_possible_contents = [];
 let element_textContent = '';
 if (elementToBeCreated ===
@@ -32,21 +48,24 @@ Tava tentando adicionar elementos com createElement passando um array.
 
 //minha ideia aqui consiste em garantir que o sistema tenha opcao de aceitar ou
 //nao elementos de conteudos vazios
-let allowNullContents = false;
-
-function addElements(elementToBeCreated, element_content) {
+let allowNullContents = true;
+let applyBackground = true;
+function addElements(elementToBeCreated, element_content, elementBackground) {
     for (let i = 0; i < elementToBeCreated.length; i++) {
         const elementCreated = document.createElement(elementToBeCreated[i]);
 
         if (element_content[i]) {
             elementCreated.innerHTML = element_content[i];
         } else if (allowNullContents === false) {
-            console.log(`${elementToBeCreated[i]} has not any content, and not created. You can
+            console.log(`${elementToBeCreated[i]} or element[${i}] has not any content, and not created. You can
 allow null contents setting allowNullContents = true`);
             return;
         } else {
             console.log(`${elementToBeCreated[i]} has not any content, but created anyway`);
-            content.append(elementCreated);
+        }
+        if (elementBackground[i] && applyBackground === true){
+            elementCreated.style.background = `#${elementBackground[0]}`;
+            console.log(elementBackground[i])
         }
         content.append(elementCreated);
     }
@@ -55,4 +74,4 @@ allow null contents setting allowNullContents = true`);
 }
 // licao 2, sempre lembrar de colocar .length lidando com arrays
 
-addElements(elementToBeCreated, elementWithContent);
+addElements(elementToBeCreated, elementWithContent,elementBackground);
