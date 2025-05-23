@@ -14,7 +14,7 @@ const colorSelector = document.querySelector('.color-selector');
 colorSelector.addEventListener('change', function () {
     colorSelected = parseInt(this.value);
 
-    // Atualiza o array inteiro com a nova cor aplicada a todos os elementos
+    // atualiza o array de cores qnd o valor muda (change) e aplica a cor aos elementos
     elementBackground = elementToBeCreated.map(() => backgroundColors[colorSelected][1]);
     addElements(elementToBeCreated, elementWithContent, elementBackground);
     console.log("Cores atualizadas: ", elementBackground);
@@ -64,7 +64,7 @@ allow null contents setting allowNullContents = true`);
             console.log(`${elementToBeCreated[i]} has not any content, but created anyway`);
         }
         if (elementBackground[i] && applyBackground === true){
-            elementCreated.style.background = `#${elementBackground[0]}`;
+            elementCreated.style.background = `#${elementBackground[i]}`;
             console.log(elementBackground[i])
         }
         content.append(elementCreated);
