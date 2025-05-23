@@ -1,9 +1,27 @@
 const content = document.querySelector('.content');
+/* quero que ele adicione os conteudos na pagina content
+para criar um novo elemento ele deve apresentar um selector com os elementos possiveis
+e os seus respectivos conteudos. Apos isso ele ira adicionar no array de elementos a
+serem criados e no de conteudo.
+
+quando for criar os elementos adicione na lista
+*/
 
 // elementos
+const newElementSelector = document.querySelector('.newElementSelector');
+newElementSelector.addEventListener('change',() => {
+    const newElementSelected = (document.querySelector('.newElementSelector').value).slipt(",");
+    console.log(newElementSelected);
+})
+let buttonArrayIndicator = parseInt(newElementSelector);
+console.log(buttonArrayIndicator);
 const elementos = ['div', ['p', 'h1', 'h2', 'h3', 'h4'], 'span', 'button'];
-let elementToBeCreated = [elementos[1][1], elementos[3]];
-
+let elementToBeCreated = [elementos[1][1], elementos[3],elementos[3]];
+let newElementInArray = 
+`let iTest=0;
+newListElement = document.createElement('li');
+newListElement.innerHTML = elementToBeCreated[iTest];
+list.append(newListElement);` // prototipo de adicionar os elementos criados na lista
 // conteudos
 let element_possible_contents = [];
 let element_textContent = '';
@@ -40,18 +58,27 @@ function addElements(elementToBeCreated, element_content) {
 
         if (element_content[i]) {
             elementCreated.innerHTML = element_content[i];
+            addToList(i);
+            content.append(elementCreated);
         } else if (allowNullContents === false) {
-            console.log(`${elementToBeCreated[i]} has not any content, and not created. You can
+            console.log(`${elementToBeCreated[i]} or element[${i}] has not any content, and not created. You can
 allow null contents setting allowNullContents = true`);
-            return;
+            
         } else {
-            console.log(`${elementToBeCreated[i]} has not any content, but created anyway`);
+            console.log(`${elementToBeCreated[i]} element[${i}] has not any content, but created anyway`);
+            addToList(i);
             content.append(elementCreated);
         }
-        content.append(elementCreated);
+        
     }
 
     console.log(elementToBeCreated);
+}
+function addToList (index){
+    const list = document.querySelector('.created-elements-list');
+    newListElement = document.createElement('li');
+    newListElement.innerHTML = `${elementToBeCreated[index]} | content: ${elementWithContent[index]}`;
+    list.append(newListElement);
 }
 // licao 2, sempre lembrar de colocar .length lidando com arrays
 
