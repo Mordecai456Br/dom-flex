@@ -3,21 +3,30 @@ const content = document.querySelector('.content');
 
 
 // color-selector and colors
-let backgroundColors = [["red", 'CC3A3A'], ["orange", 'DD6033'], ["yellow", 'EDC63A'], ["green", '94CC3A'],
-["blue", '3AADCC'], ["dark-blue", '3A70CC'], ["purple", '943ACC'], ["pink", 'CC3A94']];
+let backgroundColors = [["none", ''],
+["red", 'rgba(218, 22, 22, 1)'],
+["orange", 'rgba(242, 127, 26, 1)'],
+["yellow", 'rgb(209, 206, 32)'],
+["green", 'rgb(31, 190, 65)'],
+["blue", 'rgb(26, 145, 242)'],
+["dark-blue", 'rgb(26, 76, 242)'],
+["purple", 'rgb(110, 44, 231)'],
+["pink", 'rgb(197, 28, 155)']];
 
 let colorSelected = 0;
 let elementBackground = [backgroundColors[colorSelected][1]];
 
-const colorSelector = document.querySelector('.color-selector');
-colorSelector.addEventListener('change', function () {
-    colorSelected = parseInt(this.value);
-
-    // atualiza o array de cores qnd o valor muda (change) e aplica a cor aos elementos
-    elementBackground = elementToBeCreated.map(() => backgroundColors[colorSelected][1]);
-    addElements(elementToBeCreated, elementWithContent, elementBackground);
-    console.log("Cores atualizadas: ", elementBackground);
-});
+function updateColor() {
+    const colorSelector = document.querySelector('.color-selector');
+    colorSelector.addEventListener('change', function () {
+        colorSelected = parseInt(this.value);
+        elementBackground = [backgroundColors[colorSelected][1]];
+        // atualiza o array de cores qnd o valor muda (change) e aplica a cor aos elementos
+        //  elementBackground = elementToBeCreated.map(() => backgroundColors[colorSelected][1]);
+        console.log("Cores atualizadas: ", elementBackground);
+        console.log("Cor atualizada: ", colorSelected);
+    });
+}
 
 // content
 /* quero que ele adicione os conteudos na pagina content
@@ -33,7 +42,6 @@ const newElementSelector = document.querySelector('.newElementSelector');
 
 const elementos = ['div', ['p', 'h1', 'h2', 'h3', 'h4'], 'span', 'button'];
 let elementToBeCreated = [elementos[1][1], elementos[3], elementos[3]];
-
 
 `let iTest=0;
 newListElement = document.createElement('li');
@@ -53,9 +61,10 @@ if (elementToBeCreated ===
 }
 let elementWithContent = ["ola", null, "eai"];
 
+const addElementButton = document.querySelector(".add-element-button");
 let newElementContent = "";
 let newElementSelected = "";
-newElementSelector.addEventListener('change', () => {
+addElementButton.addEventListener('click', () => {
     let contentInput = document.getElementById("elementContentInput");
     newElementContent = contentInput.value;
 
@@ -68,7 +77,8 @@ newElementSelector.addEventListener('change', () => {
         newElementSelected = elementos[index0Selected][index1Selected]
     };
     addElements(newElementSelected, newElementContent, elementBackground);
-    
+    updateColor();
+
 });
 `let element_content = ["ola este seria o conteudo", '<div style="background:#a6ff52; width:100%; height:20px "><div/>'];
     const novoElemento = document.createElement(elementToBeCreated);
@@ -86,7 +96,7 @@ Tava tentando adicionar elementos com createElement passando um array.
 let allowNullContents = true;
 let applyBackground = true;
 
-function addElements(newElementSelected, element_content, elementBackground) {
+function addElements(newElementSelected, newElementContent, elementBackground) {
     let elementCreated = document.createElement(newElementSelected);
     elementToBeCreated.push(newElementSelected);
     let index = elementToBeCreated.length; // ja q ele é o novo elemento, pega o tamanho do array
@@ -100,16 +110,14 @@ function addElements(newElementSelected, element_content, elementBackground) {
 allow null contents setting allowNullContents = true`);
 
     } else {
-        console.log(`${elementToBeCreated[index]} has not any content, but created anyway`);
+        console.log(`${elementCreated[index]} has not any content, but created anyway`);
     }
     if (elementBackground && applyBackground === true) {
-        elementCreated.style.background = `#${elementBackground}`;
+        elementCreated.style.background = elementBackground;
         console.log(elementBackground)
-        console.log(`${elementToBeCreated[index]} element[${index}] has not any content, but created anyway`);
-        addToList(index);
         content.append(elementCreated);
     }
-    console.log(elementToBeCreated);
+    console.log(elementCreated);
 }
 
 function loadElements(elementToBeCreated, element_content, elementBackground) {
@@ -128,7 +136,7 @@ allow null contents setting allowNullContents = true`);
             console.log(`${elementToBeCreated[i]} has not any content, but created anyway`);
         }
         if (elementBackground[i] && applyBackground === true) {
-            elementCreated.style.background = `#${elementBackground[i]}`;
+            elementCreated.style.background = elementBackground[i];
             console.log(elementBackground[i])
             console.log(`${elementToBeCreated[i]} element[${i}] has not any content, but created anyway`);
             addToList(i);
@@ -147,3 +155,4 @@ function addToList(index) {
 // licao 2, sempre lembrar de colocar .length lidando com arrays
 
 loadElements(elementToBeCreated, elementWithContent, elementBackground);
+updateColor();
