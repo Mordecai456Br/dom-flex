@@ -67,7 +67,6 @@ let newElementSelected = "";
 addElementButton.addEventListener('click', () => {
     let contentInput = document.getElementById("elementContentInput");
     newElementContent = contentInput.value;
-
     newElementSelected = document.querySelector('.newElementSelector').value.split(",").map(Number);
     let index0Selected = newElementSelected[0];
     let index1Selected = newElementSelected[1];
@@ -99,8 +98,10 @@ let applyBackground = true;
 function addElements(newElementSelected, newElementContent, elementBackground) {
     let elementCreated = document.createElement(newElementSelected);
     elementToBeCreated.push(newElementSelected);
-    let index = elementToBeCreated.length; // ja q ele é o novo elemento, pega o tamanho do array
+    elementWithContent.push(newElementContent);
 
+    let index = elementToBeCreated.indexOf(newElementSelected);// ja q ele é o novo elemento, pega o tamanho do array
+    console.log("este é o index da lista: "+index)
     if (newElementContent != null) {
         elementCreated.innerHTML = newElementContent;
         addToList(index);
@@ -149,7 +150,7 @@ allow null contents setting allowNullContents = true`);
 function addToList(index) {
     const list = document.querySelector('.created-elements-list');
     newListElement = document.createElement('li');
-    newListElement.innerHTML = `${elementToBeCreated[index]} | content: ${elementWithContent[index]}`;
+    newListElement.innerText = `${elementToBeCreated[index]} | content: ${elementWithContent[index]}`;
     list.append(newListElement);
 }
 // licao 2, sempre lembrar de colocar .length lidando com arrays
