@@ -41,7 +41,8 @@ quando for criar os elementos adicione na lista
 const newElementSelector = document.querySelector('.newElementSelector');
 
 const elementos = ['div', ['p', 'h1', 'h2', 'h3', 'h4'], 'span', 'button'];
-let elementToBeCreated = [elementos[1][1], elementos[3], elementos[3]];
+//let elementToBeCreated = [elementos[1][1], elementos[3], elementos[3]];
+let elementToBeCreated = [];
 
 `let iTest=0;
 newListElement = document.createElement('li');
@@ -59,7 +60,7 @@ if (elementToBeCreated ===
         elementos[1][0], elementos[1][1], elementos[1][2], elementos[1][3], elementos[1][4],
         elementos[0], elementos[2], elementos[3]];
 }
-let elementWithContent = ["ola", null, "eai"];
+let elementWithContent = [];
 
 const addElementButton = document.querySelector(".add-element-button");
 let newElementContent = "";
@@ -101,6 +102,7 @@ function addElements(newElementSelected, newElementContent, elementBackground) {
     elementWithContent.push(newElementContent);
 
     let index = elementToBeCreated.indexOf(newElementSelected);// ja q ele é o novo elemento, pega o tamanho do array
+    
     console.log("este é o index da lista: "+index)
     if (newElementContent != null) {
         elementCreated.innerHTML = newElementContent;
@@ -115,7 +117,7 @@ allow null contents setting allowNullContents = true`);
     }
     if (elementBackground && applyBackground === true) {
         elementCreated.style.background = elementBackground;
-        console.log(elementBackground)
+        console.log(elementBackground);
         content.append(elementCreated);
     }
     console.log(elementCreated);
