@@ -33,7 +33,7 @@ function updateColor() {
     colorSelector.addEventListener('change', function () {
         colorSelected = parseInt(this.value);
         elementBackground = [backgroundColors[colorSelected][1]];
-        
+
         console.log("Cores atualizadas: ", elementBackground);
         console.log("Cor atualizada: ", colorSelected);
     });
@@ -42,30 +42,19 @@ function updateColor() {
 // Elementos
 const newElementSelector = document.querySelector('.newElementSelector');
 const elementos = ['div', ['p', 'h1', 'h2', 'h3', 'h4'], 'span', 'button'];
-
-let elementToBeCreated = [elementos[1][1]];
+let elementToBeCreated = [];
 // -----------------------------------------------------------------------------------------------------------------------
 // Conteudos
-let element_possible_contents = [];
-let element_textContent = '';
-if (elementToBeCreated ===
-    elementos[1][0] || elementos[1][1] ||
-    elementos[1][2] || elementos[1][3] ||
-    elementos[1][4]
-) { element_possible_contents = element_textContent } else {
-    element_possible_contents = [element_textContent,
-        elementos[1][0], elementos[1][1], elementos[1][2], elementos[1][3], elementos[1][4],
-        elementos[0], elementos[2], elementos[3]];
-    }
-    let elementWithContent = [];
-    
+
+let elementWithContent = [];
+
 // -----------------------------------------------------------------------------------------------------------------------
 // Add Button
 const addElementButton = document.querySelector(".add-element-button");
 let newElementContent = "";
 let newElementSelected = "";
 addElementButton.addEventListener('click', () => {
-    let contentInput = document.getElementById("elementContentInput");
+    const contentInput = document.getElementById("elementContentInput");
     newElementContent = contentInput.value;
     newElementSelected = document.querySelector('.newElementSelector').value.split(",").map(Number);
     let index0Selected = newElementSelected[0];
@@ -77,7 +66,7 @@ addElementButton.addEventListener('click', () => {
     };
     addElements(newElementSelected, newElementContent, elementBackground);
     updateColor();
-    
+
 });
 // -----------------------------------------------------------------------------------------------------------------------
 // Funcoes principais - AddElements, LoadElements, AddToList
@@ -87,8 +76,8 @@ function addElements(newElementSelected, newElementContent, elementBackground) {
     elementWithContent.push(newElementContent);
 
     let index = elementToBeCreated.indexOf(newElementSelected);// ja q ele é o novo elemento, pega o tamanho do array
-    
-    console.log("este é o index da lista: "+index)
+
+    console.log("este é o index da lista: " + index)
     if (newElementContent != null) {
         elementCreated.innerHTML = newElementContent;
         addToList(index);
@@ -102,10 +91,11 @@ allow null contents setting allowNullContents = true`);
     }
     if (elementBackground && applyBackground === true) {
         elementCreated.style.background = elementBackground;
-        console.log(elementBackground);
+        console.log("background: "+elementBackground);
         content.append(elementCreated);
     }
     console.log(elementCreated);
+    deleteElement();
 }
 
 function loadElements(elementToBeCreated, element_content, elementBackground) {
@@ -140,6 +130,7 @@ function addToList(index) {
     newListElement.innerText = `${elementToBeCreated[index]} | content: ${elementWithContent[index]}`;
     list.append(newListElement);
 }
+
 // licao 2, sempre lembrar de colocar .length lidando com arrays
 
 loadElements(elementToBeCreated, elementWithContent, elementBackground);

@@ -17,3 +17,17 @@ Tava tentando adicionar elementos com createElement passando um array.
 
 //minha ideia aqui consiste em garantir que o sistema tenha opcao de aceitar ou
 //nao elementos de conteudos vazios
+
+
+
+let element_possible_contents = [];
+let element_textContent = '';
+if (elementToBeCreated ===
+    elementos[1][0] || elementos[1][1] ||
+    elementos[1][2] || elementos[1][3] ||
+    elementos[1][4]
+) { element_possible_contents = element_textContent } else {
+    element_possible_contents = [element_textContent,
+        elementos[1][0], elementos[1][1], elementos[1][2], elementos[1][3], elementos[1][4],
+        elementos[0], elementos[2], elementos[3]];
+}
