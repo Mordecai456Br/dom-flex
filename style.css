@@ -3,9 +3,48 @@ body {
     padding:0;
     font-family: Inter, sans-serif;
 }
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+button:hover {
+    scale: 1.05;
+    transition: scale 0.2s ease-in-out;
+    cursor: pointer;
+    border: 2px solid #717171;
+
+}
+button:active {
+    scale: 0.95;
+    transition: scale 0.2s ease-in-out;
+}
+select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 10%;
+}
+#elementContentInput {
+    width: 40%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    
+}
+
 .content{
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 6px;
     height: auto;
 }
+.create-element-div {
+    display: flex;
+    width: 100%;
+    gap: 2px;
+}
+

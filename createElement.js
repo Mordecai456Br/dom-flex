@@ -1,17 +1,29 @@
+/* quero que ele adicione os conteudos na pagina content
+para criar um novo elemento ele deve apresentar um selector com os elementos possiveis
+e os seus respectivos conteudos. Apos isso ele ira adicionar no array de elementos a
+serem criados e no de conteudo.
+
+quando for criar os elementos adicione na lista
+*/
+
+// -----------------------------------------------------------------------------------------------------------------------
+// Configurations
+let allowNullContents = true;
+let applyBackground = true;
+// -----------------------------------------------------------------------------------------------------------------------
 const content = document.querySelector('.content');
-// elements
 
-
+// Cores
 // color-selector and colors
 let backgroundColors = [["none", ''],
 ["red", 'rgba(218, 22, 22, 1)'],
 ["orange", 'rgba(242, 127, 26, 1)'],
-["yellow", 'rgb(209, 206, 32)'],
-["green", 'rgb(31, 190, 65)'],
-["blue", 'rgb(26, 145, 242)'],
-["dark-blue", 'rgb(26, 76, 242)'],
-["purple", 'rgb(110, 44, 231)'],
-["pink", 'rgb(197, 28, 155)']];
+["yellow", 'rgba(248, 209, 13, 1)'],
+["green", 'rgba(30, 218, 70,1)'],
+["blue", 'rgba(26, 145, 242,1 )'],
+["dark-blue", 'rgba(0, 83, 217.1)'],
+["purple", 'rgba(26, 76, 242,1)'],
+["pink", 'rgba(197, 28, 155,1)']];
 
 let colorSelected = 0;
 let elementBackground = [backgroundColors[colorSelected][1]];
@@ -21,34 +33,19 @@ function updateColor() {
     colorSelector.addEventListener('change', function () {
         colorSelected = parseInt(this.value);
         elementBackground = [backgroundColors[colorSelected][1]];
-        // atualiza o array de cores qnd o valor muda (change) e aplica a cor aos elementos
-        //  elementBackground = elementToBeCreated.map(() => backgroundColors[colorSelected][1]);
+        
         console.log("Cores atualizadas: ", elementBackground);
         console.log("Cor atualizada: ", colorSelected);
     });
 }
-
-// content
-/* quero que ele adicione os conteudos na pagina content
-para criar um novo elemento ele deve apresentar um selector com os elementos possiveis
-e os seus respectivos conteudos. Apos isso ele ira adicionar no array de elementos a
-serem criados e no de conteudo.
-
-quando for criar os elementos adicione na lista
-*/
-
-// elementos
+// -----------------------------------------------------------------------------------------------------------------------
+// Elementos
 const newElementSelector = document.querySelector('.newElementSelector');
-
 const elementos = ['div', ['p', 'h1', 'h2', 'h3', 'h4'], 'span', 'button'];
-//let elementToBeCreated = [elementos[1][1], elementos[3], elementos[3]];
-let elementToBeCreated = [];
 
-`let iTest=0;
-newListElement = document.createElement('li');
-newListElement.innerHTML = elementToBeCreated[iTest];
-list.append(newListElement);` // prototipo de adicionar os elementos criados na lista
-// conteudos
+let elementToBeCreated = [elementos[1][1]];
+// -----------------------------------------------------------------------------------------------------------------------
+// Conteudos
 let element_possible_contents = [];
 let element_textContent = '';
 if (elementToBeCreated ===
@@ -59,9 +56,11 @@ if (elementToBeCreated ===
     element_possible_contents = [element_textContent,
         elementos[1][0], elementos[1][1], elementos[1][2], elementos[1][3], elementos[1][4],
         elementos[0], elementos[2], elementos[3]];
-}
-let elementWithContent = [];
-
+    }
+    let elementWithContent = [];
+    
+// -----------------------------------------------------------------------------------------------------------------------
+// Add Button
 const addElementButton = document.querySelector(".add-element-button");
 let newElementContent = "";
 let newElementSelected = "";
@@ -78,24 +77,10 @@ addElementButton.addEventListener('click', () => {
     };
     addElements(newElementSelected, newElementContent, elementBackground);
     updateColor();
-
+    
 });
-`let element_content = ["ola este seria o conteudo", '<div style="background:#a6ff52; width:100%; height:20px "><div/>'];
-    const novoElemento = document.createElement(elementToBeCreated);
-novoElemento.innerHTML = element_content;
-content.append(novoElemento);`// essa pequena area tava recebendo a lista e era preparada apenas
-// para um 1 tava quebrando meu codigo 😒
-
-/* primeiro aprendizado: quando a funcao espera 1 unico valor como string e vc retorna um array,
-ele so ira percorrer caso vc crie um for e nao um forEach. 
-Tava tentando adicionar elementos com createElement passando um array.
-*/
-
-//minha ideia aqui consiste em garantir que o sistema tenha opcao de aceitar ou
-//nao elementos de conteudos vazios
-let allowNullContents = true;
-let applyBackground = true;
-
+// -----------------------------------------------------------------------------------------------------------------------
+// Funcoes principais - AddElements, LoadElements, AddToList
 function addElements(newElementSelected, newElementContent, elementBackground) {
     let elementCreated = document.createElement(newElementSelected);
     elementToBeCreated.push(newElementSelected);
@@ -146,7 +131,7 @@ allow null contents setting allowNullContents = true`);
             content.append(elementCreated);
         }
     }
-    console.log(elementToBeCreated);
+    console.log(`Elementos carregados: ${elementToBeCreated}`);
 }
 
 function addToList(index) {

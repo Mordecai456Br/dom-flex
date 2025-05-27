@@ -1,0 +1,19 @@
+`let iTest=0;
+newListElement = document.createElement('li');
+newListElement.innerHTML = elementToBeCreated[iTest];
+list.append(newListElement);` // prototipo de adicionar os elementos criados na lista
+
+
+`let element_content = ["ola este seria o conteudo", '<div style="background:#a6ff52; width:100%; height:20px "><div/>'];
+    const novoElemento = document.createElement(elementToBeCreated);
+novoElemento.innerHTML = element_content;
+content.append(novoElemento);`// essa pequena area tava recebendo a lista e era preparada apenas
+// para um 1 tava quebrando meu codigo 😒
+
+/* primeiro aprendizado: quando a funcao espera 1 unico valor como string e vc retorna um array,
+ele so ira percorrer caso vc crie um for e nao um forEach. 
+Tava tentando adicionar elementos com createElement passando um array.
+*/
+
+//minha ideia aqui consiste em garantir que o sistema tenha opcao de aceitar ou
+//nao elementos de conteudos vazios
