@@ -51,6 +51,25 @@ let elementWithContent = [];
 // -----------------------------------------------------------------------------------------------------------------------
 // Add Button
 const addElementButton = document.querySelector(".add-element-button");
+
+`let iTest=0;
+newListElement = document.createElement('li');
+newListElement.innerHTML = elementToBeCreated[iTest];
+list.append(newListElement);` // prototipo de adicionar os elementos criados na lista
+// conteudos
+let element_possible_contents = [];
+let element_textContent = '';
+if (elementToBeCreated ===
+    elementos[1][0] || elementos[1][1] ||
+    elementos[1][2] || elementos[1][3] ||
+    elementos[1][4]
+) { element_possible_contents = element_textContent } else {
+    element_possible_contents = [element_textContent,
+        elementos[1][0], elementos[1][1], elementos[1][2], elementos[1][3], elementos[1][4],
+        elementos[0], elementos[2], elementos[3]];
+}
+
+
 let newElementContent = "";
 let newElementSelected = "";
 addElementButton.addEventListener('click', () => {
@@ -70,7 +89,8 @@ addElementButton.addEventListener('click', () => {
 });
 // -----------------------------------------------------------------------------------------------------------------------
 // Funcoes principais - AddElements, LoadElements, AddToList
-function addElements(newElementSelected, newElementContent, elementBackground) {
+
+function addElements(newElementSelected, element_content, elementBackground) {
     let elementCreated = document.createElement(newElementSelected);
     elementToBeCreated.push(newElementSelected);
     elementWithContent.push(newElementContent);
