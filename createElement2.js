@@ -1,20 +1,21 @@
-const htmlElements = ['div', ['p', 'h1', 'h2', 'h3', 'h4'], 'span', 'button',['img','video'],['ol','ul','li']];
+const htmlElements = ['div', ['p', 'h1', 'h2', 'h3', 'h4'], 'span', 'button', ['img', 'video'], ['ol', 'ul', 'li']];
 
 let id = 0;
-function generateId () {
+function generateId() {
     return id++;
 }
 
 const elements = [{}];
 
-function createNewElement(htmlElementWithIndex){
-    
+function createNewElement(htmlElementWithIndex) {
+
     let newId = generateId();
     let newElement = {
         id: newId,
-        htmlElement: htmlElementWithIndex}
+        htmlElement: htmlElementWithIndex
+    }
     elements.push(newElement)
-    
+
 }
 createNewElement(htmlElements[3]);
 createNewElement(htmlElements[3]);
@@ -50,10 +51,11 @@ let elementsChatosos = [
         content: "Este é um parágrafo",
     }
 ];
-function renderElementById(id, elementsArray){
-    let resultado = "";
+function renderElementById(id, elementsArray) {
+    let resultado = document.createElement('div')
     elementsArray.forEach(element => {
-        let linha = "";
+        content.append(resultado)
+        
         const elementId = element.id;
         const elementTag = element.tag;
         const elementParentId = element.parentId;
@@ -64,17 +66,23 @@ function renderElementById(id, elementsArray){
 
         const Class = `class="${elementClass}"`
         const Style = `style="${elementStyle}"`
-        if (elementClass && elementStyle){
-            linha = `<${elementTag} ${Class} ${Style}>`
-        }
-        else if (elementClass){
-            linha = `<${elementTag} ${Class}`
-        }
-        else if (elementStyle){
-            linha = `<${elementTag} ${Style}`
-        }
-        console.log(linha)
-        content.append(elementId)
+        // devo adicionar o pai depois imprimo o html de onde ele fica
+
+        // O localToAdd deve procurar no array o id que seja igual do elemento
+        // e inserir ele dentro
+        const elementToAdd = document.createElement(elementTag)
+        
+        elementToAdd.setAttribute("id", elementId)
+        if (elementClass && elementClass != ""){elementToAdd.classList.add(elementClass)}
+        if (elementStyle && elementStyle != ""){elementToAdd.style = elementStyle}
+        if (elementContent && elementContent != ""){elementToAdd.innerHTML = elementContent}
+        
+        if (elementToAdd.elementParentId != "" && elementToAdd.elementParentId !== null){
+            let elementParent = resultado.getElementsByClassName(elementParentId)
+            elementParent.append(elementToAdd)
+        } else {resultado.append(elementToAdd)}
+        
     });
+    console.log("resultado:" +resultado.innerHTML)
 }
 renderElementById("element_1", elementsChatosos);
