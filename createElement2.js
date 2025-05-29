@@ -5,24 +5,6 @@ function generateId() {
     return id++;
 }
 
-const elements = [{}];
-
-function createNewElement(htmlElementWithIndex) {
-
-    let newId = generateId();
-    let newElement = {
-        id: newId,
-        htmlElement: htmlElementWithIndex
-    }
-    elements.push(newElement)
-
-}
-createNewElement(htmlElements[3]);
-createNewElement(htmlElements[3]);
-createNewElement(htmlElements[3]);
-createNewElement(htmlElements[3]);
-console.log(elements);
-
 let elementsChatosos = [
     {
         id: "element_1",
@@ -51,8 +33,8 @@ let elementsChatosos = [
         content: "Este é um parágrafo",
     }
 ];
-function renderElementById(id, elementsArray) {
-    let resultado = document.createElement('div')
+const resultado = document.createElement('div')
+function renderAllElements(elementsArray) {
     elementsArray.forEach(element => {
         content.append(resultado)
         
@@ -61,7 +43,7 @@ function renderElementById(id, elementsArray) {
         const elementParentId = element.parentId;
         const elementClass = element.attributes.class
         const elementStyle = element.attributes.style
-        const childerns = elementsArray.filter(e => e.parentId === elementId)
+        
         const elementContent = element.content;
 
         const Class = `class="${elementClass}"`
@@ -77,12 +59,41 @@ function renderElementById(id, elementsArray) {
         if (elementStyle && elementStyle != ""){elementToAdd.style = elementStyle}
         if (elementContent && elementContent != ""){elementToAdd.innerHTML = elementContent}
         
-        if (elementToAdd.elementParentId != "" && elementToAdd.elementParentId !== null){
-            let elementParent = resultado.getElementsByClassName(elementParentId)
+        if (element.parentId != "" && element.parentId !== null){
+            let elementParent = document.getElementById(elementParentId);
             elementParent.append(elementToAdd)
         } else {resultado.append(elementToAdd)}
         
     });
     console.log("resultado:" +resultado.innerHTML)
 }
-renderElementById("element_1", elementsChatosos);
+// pega o id do elemento, coloca classe e style, ve se tem filhos e ve se tem pais  
+function renderElementById (id, elementsArray){
+    
+    const elementData = elementsArray.find(e => e.id === id)
+    if (!elementData) return console.log("elemento nao encontrado");
+    
+    const element = document.createElement(elementData.tag)
+    element.setAttribute("id",elementData.id);
+
+    if (elementData.attributes.class)
+        {element.className = elementData.attributes.class}
+        
+    if(elementData.attributes.style)
+        {element.style = elementData.attributes.style
+            
+        }
+
+    if(elementData.content)
+        {element.innerHTML = elementData.content}
+
+    const childrens = elementsArray.filter(e => e.parentId === elementData.id)
+    childrens.forEach(children => {
+        const childElement = renderElementById(children.id, elementsArray)
+        if (childElement) element.appendChild(childElement)
+    });
+    return element;
+}
+const novoElemento = renderElementById("element_1", elementsChatosos)
+
+//renderAllElements(elementsChatosos);
