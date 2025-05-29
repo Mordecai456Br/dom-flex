@@ -21,6 +21,7 @@ let elementsChatosos = [
         tag: "h1",
         parentId: "element_1",
         attributes: {
+            style: "background:rgb(234, 71, 255); color: rgb(253, 242, 242)"
         },
         content: "Hello World!",
     },
@@ -94,6 +95,6 @@ function renderElementById (id, elementsArray){
     });
     return element;
 }
-const novoElemento = renderElementById("element_1", elementsChatosos)
+//const novoElemento = renderElementById("element_1", elementsChatosos)
 
-//renderAllElements(elementsChatosos);
+renderAllElements(elementsChatosos);
