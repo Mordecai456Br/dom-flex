@@ -1,5 +1,9 @@
 const content = document.querySelector('.content')
-let id = 0;
+const elementSelector = document.querySelector('.newElementSelector')
+const elementContentSelector = document.getElementById('elementContentInput')
+
+let id = 1;
+
 const elementsArray = []
 class Element {
     constructor({ id, tag, parentId = null, attributes = {}, content = "" }) {
@@ -25,21 +29,48 @@ class Element {
             content: content
         })
         elementsArray.push(newElement)
+        Element.renderAllElements(elementsArray)
         return newElement;
     }
     // pegar o content, resetar ele
     // renderizar todos os elementos do array
     // cria todos e organiza colocando nos pais dele
-    static renderAllElements (elementsArray){
-        content.innerHTML= ""
+    static renderAllElements(elementsArray) {
+        content.innerHTML = ""
         elementsArray.forEach(element => {
-            element.classList.add(element.id)
+            const newElement = document.createElement(element.tag)
+
+            // geral - ID & content
+            newElement.setAttribute("id", element.id)
+            newElement.innerHTML = element.content;
+            //atributos - Class & Style
+            if (element.attributes.class) {
+                newElement.classList.add(element.attributes.class)
+            }
+            if (element.attributes.style) {
+                newElement.style = element.attributes.style
+            }
+            // parents
+            if (element.parentId !== null) {
+                let elementParent = document.getElementById(element.parentId)
+                elementParent.append(newElement)
+            } else { content.append(newElement) }
         })
     }
 }
+
+const addButton = document.querySelector('.add-element-button')
+addButton.addEventListener("click", () => {
+    Element.pushElement(elementSelector.value, "element_1", {}, elementContentSelector.value)
+
+})
+
+
+Element.pushElement('div', null, { style: "background-color:rgb(106, 208, 255);" }, "")
+Element.pushElement('h4', "element_1", {}, "Ola")
 Element.pushElement('h1', null, {}, "Ola")
-Element.pushElement('h4', null, {}, "Ola")
 Element.pushElement('h1', null, {}, "Ola")
-Element.pushElement('h1', null, {}, "Ola")
+Element.renderAllElements(elementsArray)
+
 console.log(elementsArray)
 
