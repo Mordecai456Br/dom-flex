@@ -1,10 +1,59 @@
-@media (max-width: 600px) {
-  body {
-    background-color: lightblue;
-  }
-  .select
-    {
-    width: 10%;
+/* Tablets and larger phones (e.g., in landscape) */
+@media (max-width: 768px) {
+    .create-element-div {
+        flex-direction: row; /* Keep elements in a row if possible */
+        justify-content: center; /* Center items when space is tighter */
+        gap: 5px; /* Slightly increase gap for better separation */
+    }
 
-  }
+    select,
+    #elementContentInput,
+    .add-element-button {
+        flex: 1 1 auto; /* Allow items to grow and shrink, but not collapse too much */
+        min-width: 150px; /* Ensure a minimum width for usability */
+    }
+
+    /* Adjust specific elements if they become too wide or narrow */
+    .newElementSelector,
+    .parentSelector {
+        min-width: 120px; /* Ensure selectors are readable */
+    }
+
+    #elementContentInput {
+        min-width: 200px; /* Input field should have more space */
+    }
+}
+
+/* Smaller mobile devices (portrait) */
+@media (max-width: 480px) {
+    .create-element-div {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center items when stacked */
+        gap: 10px; /* Increase gap for stacked elements */
+        width: 100%; /* Take full width on small screens */
+    }
+
+    select,
+    #elementContentInput,
+    .add-element-button {
+        width: 90%; /* Occupy most of the width */
+        max-width: 300px; /* Prevent elements from becoming too wide on larger screens */
+        flex: unset; /* Remove flex grow/shrink for stacked items */
+    }
+
+    /* Ensure uniform height for buttons and inputs */
+    button,
+    select,
+    #elementContentInput {
+        padding: 12px; /* Make them easier to tap/interact with */
+    }
+}
+
+/* Even smaller mobile devices (e.g., iPhone SE/old phones) */
+@media (max-width: 320px) {
+    select,
+    #elementContentInput,
+    .add-element-button {
+        width: 95%; /* Even wider for very small screens */
+    }
 }

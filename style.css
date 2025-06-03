@@ -29,22 +29,23 @@ select {
     width: auto;
 }
 #elementContentInput {
-    width: 40%;
+    width:auto;
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
+}
+.create-element-div {
+    display: flex;
+    width: auto;
+    gap: 2px;
+    justify-content: start;
+    background-color: aquamarine;
+    flex-wrap: wrap;
 }
 .content{
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 6px;
     height: auto;
-}
-.create-element-div {
-    display: flex;
-    width: 100%;
-    gap: 2px;
-    justify-content: start;
-    background-color: aquamarine;
 }
 
