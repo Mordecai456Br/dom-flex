@@ -7,6 +7,7 @@ Element.pushElement('div', "no-parent", { style: "background-color:rgb(116, 148,
 Element.pushElement('h4', "element_1", { style: "background-color:rgb(70, 56, 56); color: white" }, "belezura")
 Element.pushElement('h1', "no-parent", {}, "Ola")
 Element.pushElement('h1', "no-parent", {}, "Ola")
+Element.pushElement('h1', "element_1", {style: "color: yellow"}, "Banana  🍌")
 
 
 const addButton = document.querySelector('.add-element-button')
