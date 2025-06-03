@@ -1,0 +1,10 @@
+@media (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+  .select
+    {
+    width: 10%;
+
+  }
+}
