@@ -19,3 +19,5 @@ cores disponiveis agora é feito com rgba. 26/05/2025
 -- Código mais limpo e organizado 27/05/2025
 
 -- Mudei a logica e recriei o codigo para aceitar em formato de objeto JSON 02/06/2025
+
+-- Dividi os arquivos pela classe Element e pelo pushElement

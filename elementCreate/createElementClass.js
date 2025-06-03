@@ -1,12 +1,11 @@
 const content = document.querySelector('.content')
-const elementSelector = document.querySelector('.newElementSelector')
-const elementContentSelector = document.getElementById('elementContentInput')
+
 
 let id = 1;
 
 const elementsArray = []
 class Element {
-    constructor({ id, tag, parentId = null, attributes = {}, content = "" }) {
+    constructor({ id, tag, parentId = "no-parent", attributes = {}, content = "" }) {
         this.id = id;
         this.tag = tag;
         this.parentId = parentId;
@@ -30,6 +29,7 @@ class Element {
         })
         elementsArray.push(newElement)
         Element.renderAllElements(elementsArray)
+        appendParentToSelector()
         return newElement;
     }
     // pegar o content, resetar ele
@@ -51,7 +51,7 @@ class Element {
                 newElement.style = element.attributes.style
             }
             // parents
-            if (element.parentId !== null) {
+            if (element.parentId !== "no-parent") {
                 let elementParent = document.getElementById(element.parentId)
                 elementParent.append(newElement)
             } else { content.append(newElement) }
@@ -59,18 +59,5 @@ class Element {
     }
 }
 
-const addButton = document.querySelector('.add-element-button')
-addButton.addEventListener("click", () => {
-    Element.pushElement(elementSelector.value, "element_1", {}, elementContentSelector.value)
 
-})
-
-
-Element.pushElement('div', null, { style: "background-color:rgb(106, 208, 255);" }, "")
-Element.pushElement('h4', "element_1", {}, "Ola")
-Element.pushElement('h1', null, {}, "Ola")
-Element.pushElement('h1', null, {}, "Ola")
-Element.renderAllElements(elementsArray)
-
-console.log(elementsArray)
 
