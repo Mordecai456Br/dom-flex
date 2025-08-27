@@ -3,7 +3,7 @@ const content = document.querySelector('.content')
 
 let id = 1;
 
-const elementsArray = []
+const elementsArray = [];
 class Element {
     constructor({ id, tag, parentId = "no-parent", attributes = {}, content = "" }) {
         this.id = id;
@@ -32,6 +32,16 @@ class Element {
         appendParentToSelector()
         return newElement;
     }
+// pego o id dele e tiro
+    static deleteElement(id) {
+        const elementId = elementsArray.findIndex(element => element.id === id);
+        if(elementId !== -1){
+            elementsArray.splice(elementId, 1);
+            Element.renderAllElements(elementsArray);
+            appendParentToSelector();
+        }
+    };
+
     // pegar o content, resetar ele
     // renderizar todos os elementos do array
     // cria todos e organiza colocando nos pais dele

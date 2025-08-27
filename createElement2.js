@@ -18,6 +18,7 @@ const element = {
     },
     content: ""
 }
+
 let elementsChatosos = [
     {
         id: "element_1",
@@ -47,8 +48,6 @@ let elementsChatosos = [
         content: "Este é um parágrafo"
     }
 ];
-
-
 
 /* Para adicionar um elemento eu preciso pegar o valor de newElementSelector e separar ele pela , 
 valor recebido: value=1,2 -> aplica .split(",") e .(map para transformar em array de numero)
