@@ -1,7 +1,7 @@
 const elementSelector = document.querySelector('.newElementSelector');
 const elementContentSelector = document.getElementById('elementContentInput');
 const parentSelector = document.querySelector('.parentSelector');
-
+const colorSelector = document.querySelector('.color-selector');
 
 Element.pushElement('div', "no-parent", { style: "background-color:rgb(116, 148, 111); padding: 4px" }, "");
 Element.pushElement('h4', "element_1", { style: "background-color:rgb(70, 56, 56); color: white" }, "belezura");
@@ -12,10 +12,11 @@ Element.pushElement('h1', "element_1", {style: "color: yellow"}, "Banana  🍌")
 const addButton = document.querySelector('.add-element-button')
 addButton.addEventListener("click", () => {
     const parentSelected = parentSelector.value;
-    Element.pushElement(elementSelector.value, parentSelected, {}, elementContentSelector.value);
+    const colorSelected = colorSelector.value;
+    Element.pushElement(elementSelector.value, parentSelected, {style: `background-color:${colorSelected}`}, elementContentSelector.value);
     console.log(parentSelector.value);
 
-})
+});
 
 // logica para selecionar os pais
 /* 

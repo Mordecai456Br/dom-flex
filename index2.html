@@ -9,8 +9,44 @@
     <title>DOM Manipulation</title>
 
 </head>
-
+    <style>
+        
+        .red {
+            background-color:rgb(255, 66, 66)
+        }
+        .orange {
+            background-color:rgb(230, 113, 35)
+        }
+        .yellow {
+            background-color:rgb(231, 217, 89)
+        }
+        .green {
+            background-color:rgb(89, 236, 89)
+        }
+        .blue {
+            background-color:rgb(89, 195, 236)
+        }
+        .dark-blue {
+            background-color:rgb(11, 103, 189)
+        }
+        .purple {
+            background-color:rgb(131, 61, 243)
+        }
+        .pink {
+            background-color:rgb(230, 74, 204)
+        }
+    </style>
 <body>
+    <h1 class="changeColor">alloo</h1>
+    <h1 class="changeColor">alloo</h1>
+    <h1 class="changeColor">alloo</h1>
+    <h1 class="changeColor">alloo</h1>
+    <h1 class="changeColor">alloo</h1>
+    <h1 class="changeColor">alloo</h1>
+    <h1 class="changeColor">alloo</h1>
+    <h1 class="changeColor">alloo</h1>
+    
+
     <h4> Criar novo elemento </h4>
     <div class="create-element-div">
         <select class="newElementSelector">
@@ -33,17 +69,21 @@
         <button class="delete-element-button">delete</button>
     </div>
     <h1>DOM Pra todo lado</h1>
+    <div style="display:flex; gap:0.2rem">
     <select class="color-selector">
         <option value=0 name="none" selected>none</option>
-        <option value=1 name="red">red</option>
-        <option value=2 name="orange">orange</option>
-        <option value=3 name="yellow">yellow</option>
-        <option value=4 name="green">green</option>
-        <option value=5 name="blue">blue</option>
-        <option value=6 name="dark-blue">dark-blue</option>
-        <option value=7 name="purple">purple</option>
-        <option value=8 name="pink">pink</option>
+        <option value="red" name="red">red</option>
+        <option value="orange" name="orange">orange</option>
+        <option value="yellow" name="yellow">yellow</option>
+        <option value="green" name="green">green</option>
+        <option value="blue" name="blue">blue</option>
+        <option value="dark-blue" name="dark-blue">dark-blue</option>
+        <option value="purple" name="purple">purple</option>
+        <option value="pink" name="pink">pink</option>
     </select>
+    
+    <button class="changeColor-element-button">randomize color</button>
+    </div>
     <ol class="created-elements-list">
     </ol>
     <section class="content">
@@ -55,6 +95,7 @@
 <script src="/elementCreate/createElementClass.js"></script>
 <script src="/elementCreate/pushElements.js"></script>
 <script src="/elementCreate/deleteElements.js"></script>
+<script src="changeColor.js"></script>
 <!-- <script src="deleteElement.js"></script> -->
 
 </html>

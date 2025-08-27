@@ -31,7 +31,7 @@ class Element {
         Element.renderAllElements(elementsArray)
         appendParentToSelector()
         return newElement;
-    }
+    };
 // pego o id dele e tiro
     static deleteElement(id) {
         const elementId = elementsArray.findIndex(element => element.id === id);
