@@ -13,9 +13,18 @@ function randomInt(max){
 }
 
 function changeRandomColor(){
-    
+
     const indexColor = colorClasses[randomInt(8)]
     const indexClasse = colorClasses[randomInt(8)]
+
+    changeColorTargets.forEach(target => {
+        colorClasses.forEach(color => {
+            target.classList.remove(color)
+        });
+    })
+
+
+
 
     indexClasse.classList.add(indexColor);
 }
