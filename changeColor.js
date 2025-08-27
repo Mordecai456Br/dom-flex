@@ -1,12 +1,12 @@
 const changeColorButton = document.querySelector('.changeColor-element-button');
 
 changeColorButton.addEventListener("click", () => {
-    changeRandomColor();
+    setInterval(changeRandomColor, 1000);
 });
 
 const colorClasses = ["red","orange","yellow","green","blue","dark-blue","purple","pink"];
 const changeColorTargets = document.querySelectorAll('.changeColor');
-// pegar um index aleatorio e colocar uma cor aleatoria
+
 
 function randomInt(max){
     return Math.floor(Math.random() * max);
@@ -21,12 +21,9 @@ function changeRandomColor(){
         colorClasses.forEach(color => {
             target.classList.remove(color)
         });
-    })
+        target.classList.add(indexColor);
+    });
 
-
-
-
-    indexClasse.classList.add(indexColor);
 }
 
 function changeColor() {
